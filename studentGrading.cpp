@@ -2,7 +2,7 @@
 #include<iostream>
 using namespace std; 
 
-void studentInfo(Student studentList[], int listSize) {
+void studentInfo(Student studentList[]) {
 
 	Student s;
 
@@ -12,15 +12,13 @@ void studentInfo(Student studentList[], int listSize) {
 	cout<<"Please enter your id"<<endl;
 	cin>>s.id;
 
-	cout<<"Please enter the number of courses"<<endl;
-	cin>>s.numCourse;
 }
 	
 
-void courseInfo(Course courseList[],int listSize) {
-
+void courseInfo(Course courseList[],int courseNum) {
+ 
 //Populate list
-	for(int i = 0; i<listSize;i++)
+	for(int i = 1; i<courseNum;i++)
 	{
 		cout<<"Enter course info "<<i+1<<" (info: name credit)"<<endl;
 		Course c; //temp course
@@ -34,17 +32,19 @@ void courseInfo(Course courseList[],int listSize) {
 		cin>>c.exam;
 		courseList[i] = c; //output course into list
 		//int calcStudentGrade(Course courseList, int listSize);
+
+		
 	}
 	
 }
 
 
-int calcStudentGrade(Course courseList[], int listSize) {
+int calcStudentGrade(Course courseList[], int courseNum) {
 	
 		
 	Course c;
 
-	courseInfo(courseList, listSize);
+	courseInfo(courseList, courseNum);
 	
 	int attendancePercent; 
 	int attendanceScore; //attendanceScore- what student got 
@@ -58,30 +58,32 @@ int calcStudentGrade(Course courseList[], int listSize) {
 	int examPercent;
 	int examScore;
 
-	cout<<"Enter your score for attendance. The result will be the percent of it in your grade"<<endl;		
-	cin>>attendanceScore;
-	attendancePercent=(attendanceScore*c.attendance)/100;
+	for(int i=0;i<courseNum;i++){
 	
-	cout<<"Enter your score for assignment. The result will be the percent of it in your grade"<<endl;		
-	cin>>assignmentScore;	
-	assignmentPercent=(assignmentScore*c.assignment)/100;
-
-	cout<<"Enter your score for quiz. The result will be the percent of it in your grade"<<endl;		
-	cin>>quizScore;	
-	quizPercent=(quizScore*c.quiz)/100;
+		cout<<"Enter your score for attendance. The result will be the percent of it in your grade"<<endl;		
+		cin>>attendanceScore;
+		attendancePercent=(attendanceScore*c.attendance)/100;
 	
-	cout<<"Enter your score for exams. The result will be the percent of it in your grade"<<endl;		
-	cin>>examScore;	
-	examPercent=(examScore*c.exam)/100;
+		cout<<"Enter your score for assignment.The result will be the percent of it in your grade"<<endl;		
+		cin>>assignmentScore;	
+		assignmentPercent=(assignmentScore*c.assignment)/100;
 
-	int overall;
-	overall=examPercent+assignmentPercent+quizPercent+attendancePercent;
+		cout<<"Enter your score for quiz.The result will be the percent of it in your grade"<<endl;		
+		cin>>quizScore;	
+		quizPercent=(quizScore*c.quiz)/100;
 	
-	cout<<overall<<endl;
+		cout<<"Enter your score for exams.The result will be the percent of it in your grade"<<endl;		
+		cin>>examScore;	
+		examPercent=(examScore*c.exam)/100;
 
+		int overall;
+		overall=examPercent+assignmentPercent+quizPercent+attendancePercent;
+	
+		cout<<"Your overall percent is "<<overall<<endl;
+	}
 	return 0; 
 }
 
-int displayStudentGrade(Course courseList[], int listSize) {
+int displayStudentGrade(Course courseList[], int courseSize) {
 	
 }

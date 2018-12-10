@@ -1,6 +1,7 @@
 #ifndef STUDENTGRADING_H
 #define STUDENTGRADING_H
 #include<string>
+using namespace std;
 
 const int MaxNameLen = 128;
 
@@ -8,7 +9,7 @@ struct Student
 {
 	char name [MaxNameLen];
 	unsigned long id;
-	unsigned long numCourse;
+	//unsigned long numCourse;
 };
 
 struct Course
@@ -19,12 +20,12 @@ struct Course
 	int assignment;
 	int quiz;
 	int exam;
-	char nameCourse [];
+	string nameCourse [];
 
 };
 
-void studentInfo(Student studentList[], int listSize);
-void courseInfo(Course courseList[],int listSize);
-int calcStudentGrade(Course courseList[], int listSize);
+void studentInfo(Student studentList[]);
+void courseInfo(Course courseList[],int courseNum);
+int calcStudentGrade(Course courseList[], int courseNum);
 
 #endif //STUDENTGRADING_H
